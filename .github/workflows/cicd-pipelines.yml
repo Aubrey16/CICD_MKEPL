@@ -5,7 +5,8 @@ on:
       - main
 
 jobs:
-  - job: checkout_code
+  db_cicd:
+    name: Database CI/CD
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
