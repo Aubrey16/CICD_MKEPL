@@ -19,4 +19,4 @@ jobs:
           username: ${{ secrets.SERVER_NAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            echo "nge print echo SSH Connection Successfullllll"
+            echo "nge print echo SSH Connection Successfulllllllllllllllllllll"
