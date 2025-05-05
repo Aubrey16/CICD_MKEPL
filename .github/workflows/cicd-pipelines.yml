@@ -20,3 +20,10 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             echo "nge print echo SSH Connection Successfulllllllllllllllllllll"
+            cd /CICD_MKEPL
+            echo "berhasil masuk >///<"
+
+            docker compose up -d
+            echo "berhasil menjalankan docker compose >///<"
+
+
