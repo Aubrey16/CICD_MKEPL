@@ -27,9 +27,3 @@ jobs:
 
             cd Unch
             
-            echo "docker compse down if running..."
-            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker compose down
-
-            echo "docker compose up..."
-            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker compose up -d
-            
