@@ -27,14 +27,14 @@ jobs:
             cd Unch
             
 
-            if [ -d "git"]; then
+            if [ -d ".git"]; then
                 echo "Folder git ada, melakukan pull..."
-                git remote set-url origin https://${{ secrets.GIT_USERNAME }}
-                :${ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/CICD_MKEPL.git
-                git pull origin main
+                git remote set-url origin https://Aubrey16
+                :${ secrets.GIT_PAT }}@github.com/Aubrey16/CICD_MKEPL.git
+                git pull 
             else
                 echo "Folder git tidak ada, melakukan clone..."
-                git clone https://${{ secrets.GIT_USERNAME }}
-                :${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/CICD_MKEPL.git
+                git clone https://Aubrey16
+                :${{ secrets.GIT_PAT }}@github.com/Aubrey16/CICD_MKEPL.git
             fi
 
