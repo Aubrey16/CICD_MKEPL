@@ -24,6 +24,17 @@ jobs:
                 echo "Folder Unch tidak ada, membuat folder..."
                 mkdir Unch
             fi
-
             cd Unch
             
+
+            if [ -d "git"]; then
+                echo "Folder git ada, melakukan pull..."
+                git remote set-url origin https://${{ secrets.SERVER_NAME }}
+                :${ secrets.SERVER_PAT }}@github.com/${{ secrets.SERVER_NAME }}/cicd_database_example.git
+                git pull origin main
+            else
+                echo "Folder git tidak ada, melakukan clone..."
+                git clone https://${{ secrets.SERVER_NAME }}
+                :${{ secrets.SERVER_PAT }}@github.com/${{ secrets.SERVER_NAME }}/cicd_database_example.git
+            fi
+
