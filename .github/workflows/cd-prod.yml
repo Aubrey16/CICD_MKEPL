@@ -20,15 +20,16 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             echo "Konek ke server..."
-            if [ -d "/CICD_MKEPL/Unch" ]; then
-              echo "Direktori /CICD_MKEPL/Unch sudah ada."
-              cd /CICD_MKEPL/Unch
-            else
-              echo "Membuat direktori /CICD_MKEPL..."
-              mkdir /CICD_MKEPL/Unch
-              cd /CICD_MKEPL/Unch
+            if [ ! -d "Unch" ]; then
+                echo "Folder Unch tidak ada, membuat folder..."
+                mkdir Unch
             fi
 
-            echo "${{ secrets.SERVER_PASSWORD }}" | Sudo -S docker compose down
-            echo "${{ secrets.SERVER_PASSWORD }}" | Sudo -S docker compose up -d
+            cd Unch
+            
+            echo "docker compse down if running..."
+            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker compose down
+
+            echo "docker compose up..."
+            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker compose up -d
             
