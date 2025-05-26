@@ -30,11 +30,11 @@ jobs:
             if [ -d "git"]; then
                 echo "Folder git ada, melakukan pull..."
                 git remote set-url origin https://${{ secrets.GIT_USERNAME }}
-                :${ secrets.SERVER_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/CICD_MKEPL.git
+                :${ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/CICD_MKEPL.git
                 git pull origin main
             else
                 echo "Folder git tidak ada, melakukan clone..."
                 git clone https://${{ secrets.GIT_USERNAME }}
-                :${{ secrets.SERVER_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/CICD_MKEPL.git
+                :${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/CICD_MKEPL.git
             fi
 
