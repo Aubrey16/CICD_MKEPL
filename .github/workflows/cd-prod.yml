@@ -1,0 +1,34 @@
+on:
+    push:
+        branches:
+        - main
+
+jobs:
+  db_cicd:
+    name: production
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: SSH Connect
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: |
+            echo "Konek ke server..."
+            if [ -d "/CICD_MKEPL/Unch" ]; then
+              echo "Direktori /CICD_MKEPL/Unch sudah ada."
+              cd /CICD_MKEPL/Unch
+            else
+              echo "Membuat direktori /CICD_MKEPL..."
+              mkdir /CICD_MKEPL/Unch
+              cd /CICD_MKEPL/Unch
+            fi
+
+            echo "${{ secrets.SERVER_PASSWORD }}" | Sudo -S docker compose down
+            echo "${{ secrets.SERVER_PASSWORD }}" | Sudo -S docker compose up -d
+            
